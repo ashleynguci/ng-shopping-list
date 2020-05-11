@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-list',
@@ -7,11 +8,14 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  recipes: Recipe[] = [new Recipe("Banh xeo", "a Vietnamese pancake ", "https://cdn.daotaobeptruong.vn/wp-content/uploads/2020/01/banh-xeo-mien-tay.jpg"), new Recipe("Banh cuon", "a Vietnamese spring roll ", "https://www.hoidaubepaau.com/wp-content/uploads/2019/06/hoc-lam-banh-cuon-mo-quan.jpg")];
+  recipes: Recipe[];
 
   @Output() recipeChoosen = new EventEmitter<Recipe>();
   // Because now pass to parent component
-  constructor() { }
+
+  constructor(private recipeService: RecipeService) {
+    this.recipes = this.recipeService.getRecipes();
+  }
 
   ngOnInit(): void {
   }
