@@ -18,4 +18,9 @@ export class ShoppingListService {
         // Just add into the copy of ingredients array
         this.ingredientsChanged.emit(this.ingredients.slice())
     }
+
+    addIngredients(ingres: Ingredient[]) {
+        this.ingredients.push(...ingres);
+        this.ingredientsChanged.emit(this.ingredients.slice())
+    }
 }
