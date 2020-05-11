@@ -6,9 +6,11 @@ Step2:
 cd ng-practise
 
 Step3:
-npm install
+**npm install**
+<br/>
 Make sure you have downloaded Angular CLI
-npm install -g @angular/cli
+<br/>
+**npm install -g @angular/cli**
 
 Step4:
-ng serve
+**ng serve**
