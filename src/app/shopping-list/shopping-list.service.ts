@@ -1,8 +1,8 @@
 import { Ingredient } from '../recipes/share/ingredient.model';
-import { EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 
 export class ShoppingListService {
+    startedEditing = new Subject<number>();
     ingredientsChanged = new Subject<Ingredient[]>();
 
     private ingredients: Ingredient[] = [
@@ -14,6 +14,10 @@ export class ShoppingListService {
         return this.ingredients.slice();
     }
 
+    getIngredient(index: number) {
+        return this.ingredients[index];
+    }
+
     addIngredient(ingre: Ingredient) {
         this.ingredients.push(ingre);
         // Just add into the copy of ingredients array
@@ -23,5 +27,10 @@ export class ShoppingListService {
     addIngredients(ingres: Ingredient[]) {
         this.ingredients.push(...ingres);
         this.ingredientsChanged.next(this.ingredients.slice())
+    }
+
+    updateIngredients(index: number, newIngredient: Ingredient) {
+        this.ingredients[index] = newIngredient;
+        this.ingredientsChanged.next(this.ingredients.slice());
     }
 }
