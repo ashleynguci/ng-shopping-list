@@ -15,14 +15,14 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="imgUrl">Image Url</label>
-                        <input type="text" id="imgUrl" formControlName='imageUrl' class="form-control">
+                        <input type="text" id="imgUrl" formControlName='imageUrl' class="form-control" #imageUrl>
                     </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-12">
-                    <img src="" class="img-responsive">
+                    <img [src]="imageUrl.value" class="img-responsive">
                 </div>
             </div>
 
